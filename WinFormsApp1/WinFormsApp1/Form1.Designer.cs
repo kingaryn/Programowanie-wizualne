@@ -73,9 +73,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(264, 99);
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(271, 92);
             label1.Name = "label1";
-            label1.Size = new Size(91, 20);
+            label1.Size = new Size(106, 23);
             label1.TabIndex = 5;
             label1.Text = "First number";
             label1.Click += label1_Click;
@@ -83,9 +84,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(264, 165);
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.Location = new Point(246, 159);
             label2.Name = "label2";
-            label2.Size = new Size(113, 20);
+            label2.Size = new Size(131, 23);
             label2.TabIndex = 6;
             label2.Text = "Second number";
             // 
