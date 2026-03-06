@@ -34,6 +34,8 @@
             textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
+            textBox3 = new TextBox();
             SuspendLayout();
             // 
             // textBox2
@@ -91,12 +93,32 @@
             label2.TabIndex = 6;
             label2.Text = "Second number";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F);
+            label3.Location = new Point(314, 275);
+            label3.Name = "label3";
+            label3.Size = new Size(63, 23);
+            label3.TabIndex = 7;
+            label3.Text = "Results";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(394, 271);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(351, 27);
+            textBox3.TabIndex = 8;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox3);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
@@ -118,5 +140,7 @@
         private TextBox textBox1;
         private Label label1;
         private Label label2;
+        private Label label3;
+        private TextBox textBox3;
     }
 }
