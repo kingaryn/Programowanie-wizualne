@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
+            lista = new ListView();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             textBox1 = new TextBox();
             SuspendLayout();
             // 
-            // listView1
+            // lista
             // 
-            listView1.Location = new Point(12, 12);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(315, 426);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
+            lista.Location = new Point(12, 12);
+            lista.Name = "lista";
+            lista.Size = new Size(315, 426);
+            lista.TabIndex = 0;
+            lista.UseCompatibleStateImageBehavior = false;
+            lista.SelectedIndexChanged += lista_SelectedIndexChanged;
             // 
             // button1
             // 
@@ -75,8 +76,9 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(464, 82);
+            textBox1.Location = new Point(464, 83);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(276, 27);
             textBox1.TabIndex = 4;
             textBox1.Text = "Cena";
@@ -90,7 +92,7 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(listView1);
+            Controls.Add(lista);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -99,7 +101,7 @@
 
         #endregion
 
-        private ListView listView1;
+        private ListView lista;
         private Button button1;
         private Button button2;
         private Button button3;

@@ -39,9 +39,9 @@
             checkBox1.AutoSize = true;
             checkBox1.Location = new Point(40, 31);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(101, 24);
+            checkBox1.Size = new Size(137, 24);
             checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
+            checkBox1.Text = "Odbiór osobisty";
             checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -49,9 +49,9 @@
             checkBox2.AutoSize = true;
             checkBox2.Location = new Point(40, 61);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(101, 24);
+            checkBox2.Size = new Size(78, 24);
             checkBox2.TabIndex = 1;
-            checkBox2.Text = "checkBox2";
+            checkBox2.Text = "Dowóz";
             checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -78,7 +78,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(437, 450);
+            ClientSize = new Size(437, 172);
             Controls.Add(checkBox4);
             Controls.Add(checkBox3);
             Controls.Add(checkBox2);

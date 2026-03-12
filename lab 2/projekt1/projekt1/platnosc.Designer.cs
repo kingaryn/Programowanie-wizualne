@@ -37,62 +37,63 @@
             // 
             // button2
             // 
-            button2.Location = new Point(12, 264);
+            button2.Location = new Point(12, 132);
             button2.Name = "button2";
             button2.Size = new Size(377, 58);
             button2.TabIndex = 1;
-            button2.Text = "button2";
+            button2.Text = "Zapłać";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(20, 57);
+            radioButton1.Location = new Point(12, 12);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(117, 24);
+            radioButton1.Size = new Size(160, 24);
             radioButton1.TabIndex = 2;
             radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
+            radioButton1.Text = "Karta podarunkowa";
             radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(20, 102);
+            radioButton2.Location = new Point(12, 42);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(117, 24);
+            radioButton2.Size = new Size(81, 24);
             radioButton2.TabIndex = 3;
             radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
+            radioButton2.Text = "Przelew";
             radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
             radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(20, 144);
+            radioButton3.Location = new Point(12, 72);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(117, 24);
+            radioButton3.Size = new Size(54, 24);
             radioButton3.TabIndex = 4;
             radioButton3.TabStop = true;
-            radioButton3.Text = "radioButton3";
+            radioButton3.Text = "Blik";
             radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton4
             // 
             radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(20, 185);
+            radioButton4.Location = new Point(12, 102);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(117, 24);
+            radioButton4.Size = new Size(89, 24);
             radioButton4.TabIndex = 5;
             radioButton4.TabStop = true;
-            radioButton4.Text = "radioButton4";
+            radioButton4.Text = "Gotówka";
             radioButton4.UseVisualStyleBackColor = true;
             // 
             // platnosc
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 334);
+            ClientSize = new Size(401, 205);
             Controls.Add(radioButton4);
             Controls.Add(radioButton3);
             Controls.Add(radioButton2);

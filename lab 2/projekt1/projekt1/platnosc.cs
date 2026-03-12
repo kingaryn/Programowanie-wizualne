@@ -16,5 +16,10 @@ namespace projekt1
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var potwierdzenie = MessageBox.Show("Czy na pewno chcesz dokonać płatności?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }

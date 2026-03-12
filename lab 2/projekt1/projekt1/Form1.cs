@@ -24,5 +24,10 @@ namespace projekt1
             var platnosc = new platnosc();
             platnosc.Show();
         }
+
+        private void lista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
