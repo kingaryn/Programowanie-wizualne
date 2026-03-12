@@ -26,5 +26,11 @@ namespace projekt1
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var potwierdzenie = MessageBox.Show("Wybrano sposób transportu");
+            this.Close();
+        }
     }
 }

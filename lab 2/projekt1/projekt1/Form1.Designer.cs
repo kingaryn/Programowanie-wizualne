@@ -33,6 +33,7 @@
             button2 = new Button();
             button3 = new Button();
             textBox1 = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lista
@@ -76,18 +77,30 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(464, 83);
+            textBox1.Location = new Point(515, 57);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(276, 27);
+            textBox1.Size = new Size(225, 27);
             textBox1.TabIndex = 4;
-            textBox1.Text = "Cena";
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(464, 60);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 20);
+            label1.TabIndex = 5;
+            label1.Text = "Cena:";
+            label1.Click += label1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -95,6 +108,7 @@
             Controls.Add(lista);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,5 +120,6 @@
         private Button button2;
         private Button button3;
         private TextBox textBox1;
+        private Label label1;
     }
 }

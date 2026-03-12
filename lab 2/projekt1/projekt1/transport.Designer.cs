@@ -32,6 +32,7 @@
             checkBox2 = new CheckBox();
             checkBox3 = new CheckBox();
             checkBox4 = new CheckBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // checkBox1
@@ -74,11 +75,22 @@
             checkBox4.Text = "checkBox4";
             checkBox4.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(115, 151);
+            button1.Name = "button1";
+            button1.Size = new Size(165, 48);
+            button1.TabIndex = 4;
+            button1.Text = "Potwierdzenie";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // transport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(437, 172);
+            ClientSize = new Size(437, 206);
+            Controls.Add(button1);
             Controls.Add(checkBox4);
             Controls.Add(checkBox3);
             Controls.Add(checkBox2);
@@ -95,5 +107,6 @@
         private CheckBox checkBox2;
         private CheckBox checkBox3;
         private CheckBox checkBox4;
+        private Button button1;
     }
 }
