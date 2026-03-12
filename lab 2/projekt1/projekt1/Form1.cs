@@ -6,5 +6,23 @@ namespace projekt1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var wybierz = new wybierz();
+            wybierz.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var transport = new transport();
+            transport.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var platnosc = new platnosc();
+            platnosc.Show();
+        }
     }
 }
