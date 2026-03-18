@@ -83,10 +83,10 @@
             radioButton4.AutoSize = true;
             radioButton4.Location = new Point(12, 102);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(89, 24);
+            radioButton4.Size = new Size(181, 24);
             radioButton4.TabIndex = 5;
             radioButton4.TabStop = true;
-            radioButton4.Text = "Gotówka";
+            radioButton4.Text = "Płatność przy odbiorze";
             radioButton4.UseVisualStyleBackColor = true;
             // 
             // platnosc

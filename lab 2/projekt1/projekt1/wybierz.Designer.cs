@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("Pizza");
-            ListViewItem listViewItem2 = new ListViewItem("Rosół");
-            ListViewItem listViewItem3 = new ListViewItem("Makaron z kurczakiem");
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -41,7 +38,6 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
             listView1.Location = new Point(12, 12);
             listView1.Name = "listView1";
             listView1.Size = new Size(447, 241);
@@ -75,6 +71,7 @@
             button2.TabIndex = 2;
             button2.Text = "Anuluj";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // wybierz
             // 

@@ -60,9 +60,9 @@
             checkBox3.AutoSize = true;
             checkBox3.Location = new Point(40, 91);
             checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(101, 24);
+            checkBox3.Size = new Size(70, 24);
             checkBox3.TabIndex = 2;
-            checkBox3.Text = "checkBox3";
+            checkBox3.Text = "Kurier";
             checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
@@ -70,9 +70,9 @@
             checkBox4.AutoSize = true;
             checkBox4.Location = new Point(40, 121);
             checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(101, 24);
+            checkBox4.Size = new Size(74, 24);
             checkBox4.TabIndex = 3;
-            checkBox4.Text = "checkBox4";
+            checkBox4.Text = "Poczta";
             checkBox4.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -97,6 +97,7 @@
             Controls.Add(checkBox1);
             Name = "transport";
             Text = "transport";
+            Load += transport_Load;
             ResumeLayout(false);
             PerformLayout();
         }
