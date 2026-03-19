@@ -1,7 +1,7 @@
 using System.Diagnostics.Eventing.Reader;
 
 namespace lab3
-{
+{//Dodaæ zapisywanie do pliku, odczytywanie z pliku, usuwanie wiersza i jakieœ bezpieczeñstwa
     public partial class Form1 : Form
     {
         public Form1()
