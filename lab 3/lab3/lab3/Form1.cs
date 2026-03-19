@@ -1,7 +1,8 @@
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
 
 namespace lab3
-{//Dodaæ zapisywanie do pliku, odczytywanie z pliku, usuwanie wiersza i jakieœ bezpieczeñstwa
+{//Dodaæ usuwanie wiersza i jakieœ bezpieczeñstwa
     public partial class Form1 : Form
     {
         public Form1()
@@ -26,35 +27,27 @@ namespace lab3
         }
         private void ExportToCSV(DataGridView dataGridView, string filePath)
         {
-            // Tworzenie nag³ówka pliku CSV
             string csvContent = "Column1,Column2,Column3" + Environment.NewLine;
-            // Dodawanie danych z DataGridView
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                // Pomijaj wiersze niemieszcz¹ce siê w DataGridView (np. wiersz zaznaczania)
                 if (!row.IsNewRow)
                 {
-                    // Dodaj kolejne wartoœci w wierszu, oddzielone przecinkami
                     csvContent += string.Join(",", Array.ConvertAll(row.Cells.Cast<DataGridViewCell>()
                     .ToArray(), c => c.Value)) + Environment.NewLine;
                 }
             }
-            // Zapisanie zawartoœci do pliku CSV
             File.WriteAllText(filePath, csvContent);
         }
         private void button3_Click(object sender, EventArgs e)
         {
 
 
-            // Wyœwietlanie okna dialogowego wyboru lokalizacji zapisu
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Pliki CSV (*.csv)|*.csv|Wszystkie pliki (*.*)|*.*";
             saveFileDialog1.Title = "Wybierz lokalizacjê zapisu pliku CSV";
             saveFileDialog1.ShowDialog();
-            // Jeœli u¿ytkownik wybierze lokalizacjê i zatwierdzi, zapisz plik CSV
             if (saveFileDialog1.FileName != "")
             {
-                // U¿yj metody ExportToCSV i podaj obiekt DataGridView oraz œcie¿kê do pliku CSV
                 ExportToCSV(dataGridView1, saveFileDialog1.FileName);
             }
 
@@ -71,6 +64,38 @@ namespace lab3
                 MessageBox.Show("Dokoñczyæ");
             else
                 MessageBox.Show("Nie mo¿na usun¹æ pustego wiersza");
+        }
+        private void LoadCSVToDataGridView(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Plik CSV nie istnieje.", "B³¹d", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string[] lines = File.ReadAllLines(filePath);
+            DataTable dataTable = new DataTable();
+            string[] headers = lines[0].Split(',');
+            foreach (string header in headers)
+            {
+                dataTable.Columns.Add(header);
+            }
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] values = lines[i].Split(',');
+                dataTable.Rows.Add(values);
+            }
+            dataGridView1.DataSource = dataTable;
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Pliki CSV (*.csv)|*.csv|Wszystkie pliki (*.*)|*.*";
+            openFileDialog1.Title = "Wybierz plik CSV do wczytania";
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "")
+            {
+                LoadCSVToDataGridView(openFileDialog1.FileName);
+            }
         }
     }
 }
