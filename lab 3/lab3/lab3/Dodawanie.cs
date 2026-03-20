@@ -21,7 +21,25 @@ namespace lab3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            okno_glowne.dataGridView1.Rows.Add(textBox1.Text, textBox2.Text, textBox3.Text, comboBox1.Text);
+            int id = 1;
+
+            foreach (DataGridViewRow row in okno_glowne.dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int currentId = Convert.ToInt32(row.Cells[0].Value);
+                    if (currentId >= id)
+                        id = currentId + 1;
+                }
+            }
+
+            okno_glowne.dataGridView1.Rows.Add(
+                id,
+                textBox1.Text,
+                textBox2.Text,
+                textBox3.Text,
+                comboBox1.Text
+            );
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

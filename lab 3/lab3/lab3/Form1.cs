@@ -1,8 +1,8 @@
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
-
+//Dodaæ usuwanie wiersza i jakieœ bezpieczeñstwa
 namespace lab3
-{//Dodaæ usuwanie wiersza i jakieœ bezpieczeñstwa
+{
     public partial class Form1 : Form
     {
         public Form1()
@@ -23,11 +23,18 @@ namespace lab3
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dataGridView1.Columns.Add("ID", "ID");
+            dataGridView1.Columns.Add("Imie", "Imiê");
+            dataGridView1.Columns.Add("Nazwisko", "Nazwisko");
+            dataGridView1.Columns.Add("Wiek", "Wiek");
+            dataGridView1.Columns.Add("Stanowisko", "Stanowisko");
 
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
         }
         private void ExportToCSV(DataGridView dataGridView, string filePath)
         {
-            string csvContent = "Column1,Column2,Column3" + Environment.NewLine;
+            string csvContent = "ID,Imie,Nazwisko,Wiek,Stanowisko" + Environment.NewLine;
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 if (!row.IsNewRow)
@@ -58,12 +65,24 @@ namespace lab3
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
-                //sposób julki coœ z nim pokombinowaæ
-                //int index = dataGridView1.SelectedRows[0].Index;
-                //dataGridView1.Rows.RemoveAt(index);
-                MessageBox.Show("Dokoñczyæ");
+            {
+                int index = dataGridView1.SelectedRows[0].Index;
+
+                var wynik = MessageBox.Show(
+                    "Czy na pewno chcesz usun¹æ zaznaczony wiersz?",
+                    "Potwierdzenie",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (wynik == DialogResult.Yes)
+                {
+                    dataGridView1.Rows.RemoveAt(index);
+                }
+            }
             else
-                MessageBox.Show("Nie mo¿na usun¹æ pustego wiersza");
+            {
+                MessageBox.Show("Zaznacz wiersz do usuniêcia!");
+            }
         }
         private void LoadCSVToDataGridView(string filePath)
         {
@@ -84,7 +103,14 @@ namespace lab3
                 string[] values = lines[i].Split(',');
                 dataTable.Rows.Add(values);
             }
-            dataGridView1.DataSource = dataTable;
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] values = lines[i].Split(',');
+                dataGridView1.Rows.Add(values);
+            }
         }
         private void button4_Click(object sender, EventArgs e)
         {
