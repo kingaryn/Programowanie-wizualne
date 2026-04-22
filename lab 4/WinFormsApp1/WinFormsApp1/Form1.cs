@@ -32,7 +32,16 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (loadedImage == null) return;
 
+            if (radioButton1.Checked)        // 90°
+                loadedImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            else if (radioButton2.Checked)   // 180°
+                loadedImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            else if (radioButton3.Checked)   // 270°
+                loadedImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
+
+            pictureBox1.Image = loadedImage;
         }
 
         private void button4_Click(object sender, EventArgs e)
