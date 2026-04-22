@@ -46,7 +46,27 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (loadedImage == null) return;
 
+            loadedImage.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            pictureBox1.Image = loadedImage;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (loadedImage == null) return;
+
+            for (int y = 0; y < loadedImage.Height; y++)
+            {
+                for (int x = 0; x < loadedImage.Width; x++)
+                {
+                    Color c = loadedImage.GetPixel(x, y);
+                    Color inv = Color.FromArgb(255 - c.R, 255 - c.G, 255 - c.B);
+                    loadedImage.SetPixel(x, y, inv);
+                }
+            }
+
+            pictureBox1.Image = loadedImage;
         }
     }
 }
