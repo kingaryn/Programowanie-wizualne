@@ -68,5 +68,49 @@ namespace WinFormsApp1
 
             pictureBox1.Image = loadedImage;
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (loadedImage == null) return;
+
+            Bitmap newImage = new Bitmap(loadedImage);
+
+            for (int y = 0; y < newImage.Height; y++)
+            {
+                for (int x = 0; x < newImage.Width; x++)
+                {
+                    Color c = newImage.GetPixel(x, y);
+
+                    // warunek "czy piksel jest zielony"
+                    bool isGreen = c.G > c.R + 20 && c.G > c.B + 20;
+
+                    if (!isGreen)
+                    {
+                        newImage.SetPixel(x, y, Color.Black);
+                    }
+                }
+            }
+
+            loadedImage = newImage;
+            pictureBox1.Image = loadedImage;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (loadedImage == null)
+            {
+                MessageBox.Show("Brak obrazu do zapisania.");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PNG|*.png|JPEG|*.jpg|Bitmap|*.bmp";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                loadedImage.Save(sfd.FileName);
+                MessageBox.Show("Obraz zapisany pomyœlnie!");
+            }
+        }
     }
 }
