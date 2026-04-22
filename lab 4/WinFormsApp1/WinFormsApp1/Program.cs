@@ -1,28 +1,16 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
+using WinFormsApp1;
 
 namespace ImageEditor
 {
-    public partial class MainForm : Form
+    internal static class Program
     {
-        private Bitmap loadedImage;
-
-        public MainForm()
+        [STAThread]
+        static void Main()
         {
-            InitializeComponent();
-        }
-
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Bitmap files (*.bmp)|*.bmp";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                loadedImage = new Bitmap(dialog.FileName);
-                pictureBox.Image = loadedImage;
-            }
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
         }
     }
 }
