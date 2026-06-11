@@ -1,20 +1,60 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:lab8.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="lab8.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        x:Class="lab8.MainWindow"
+        Width="900"
+        Height="750"
         Title="lab8">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="10">
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Wniosek o przeprowadzenie egzaminu komisyjnego"
+                       FontSize="24"
+                       FontWeight="Bold"/>
 
+            <TextBox Name="ImieNazwiskoBox" Watermark="1. Imie i nazwisko"/>
+            <TextBox Name="NumerAlbumuBox" Watermark="2. Numer albumu"/>
+            <TextBox Name="KierunekBox" Watermark="3. Kierunek studiow"/>
+            <TextBox Name="StopienBox" Watermark="4. Stopien studiow"/>
+            <TextBox Name="SemestrBox" Watermark="5. Semestr"/>
+            <TextBox Name="TrybStudiowBox" Watermark="6. Tryb studiow"/>
+            <TextBox Name="RokAkademickiBox" Watermark="7. Rok akademicki"/>
+            <TextBox Name="PrzedmiotBox" Watermark="8. Nazwa przedmiotu"/>
+            <TextBox Name="ProwadzacyBox" Watermark="9. Prowadzacy przedmiot"/>
+            <TextBox Name="TerminEgzaminuBox" Watermark="10. Termin egzaminu"/>
+            
+            <TextBox Name="UzasadnienieBox"
+                     Watermark="11. Uzasadnienie wniosku"
+                     Height="100"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"/>
+
+            <TextBox Name="DataZlozeniaBox" Watermark="12. Data zlozenia wniosku"/>
+            <TextBox Name="AdresEmailBox" Watermark="13. Adres e-mail"/>
+            <TextBox Name="TelefonBox" Watermark="14. Telefon"/>
+            <TextBox Name="PodpisBox" Watermark="15. Podpis / imie i nazwisko"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <Button Content="Zapisz do bazy"
+                        Click="SaveButton_Click"/>
+
+                <Button Content="Odczytaj poprzednie wpisy"
+                        Click="ReadButton_Click"/>
+
+                <Button Content="Wyczysc formularz"
+                        Click="ClearButton_Click"/>
+            </StackPanel>
+
+            <TextBlock Name="InfoText"
+                       FontWeight="Bold"/>
+
+            <TextBlock Text="Poprzednie wpisy:"
+                       FontSize="18"
+                       FontWeight="Bold"/>
+
+            <ListBox Name="EntriesList"
+                     Height="200"/>
+
+        </StackPanel>
+    </ScrollViewer>
 </Window>

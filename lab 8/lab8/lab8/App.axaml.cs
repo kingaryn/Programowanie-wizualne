@@ -5,7 +5,7 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using lab8.ViewModels;
-using lab8.Views;
+
 
 namespace lab8
 {
