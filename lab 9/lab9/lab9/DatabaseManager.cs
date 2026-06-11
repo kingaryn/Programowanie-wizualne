@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace lab8;
+namespace lab9;
 
 public class DatabaseManager
 {

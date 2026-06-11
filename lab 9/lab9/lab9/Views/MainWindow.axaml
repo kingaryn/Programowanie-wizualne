@@ -1,9 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="lab8.MainWindow"
+        x:Class="lab9.MainWindow"
         Width="900"
         Height="750"
-        Title="lab8">
+        Title="lab9">
 
     <ScrollViewer>
         <StackPanel Margin="20" Spacing="10">

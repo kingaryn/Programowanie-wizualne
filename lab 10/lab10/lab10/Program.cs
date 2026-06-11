@@ -1,7 +1,7 @@
 ﻿using System;
 using Avalonia;
 
-namespace lab8
+namespace lab10
 {
     internal sealed class Program
     {

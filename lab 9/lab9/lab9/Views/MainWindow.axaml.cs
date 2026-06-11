@@ -2,7 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
 
-namespace lab8;
+namespace lab9;
 
 public partial class MainWindow : Window
 {

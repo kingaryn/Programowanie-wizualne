@@ -4,10 +4,10 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using lab8.ViewModels;
+using lab10.ViewModels;
+using lab10.Views;
 
-
-namespace lab8
+namespace lab10
 {
     public partial class App : Application
     {

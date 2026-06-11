@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using lab8.ViewModels;
+using lab9.ViewModels;
 
-namespace lab8
+namespace lab9
 {
     /// <summary>
     /// Given a view model, returns the corresponding view if possible.

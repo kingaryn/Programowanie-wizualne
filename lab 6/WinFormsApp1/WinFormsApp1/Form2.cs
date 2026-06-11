@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 namespace WinFormsApp1
@@ -14,6 +7,7 @@ namespace WinFormsApp1
     public partial class Form2 : Form
     {
         private Timer timerSpawn = new Timer();
+        private Timer timerHide 
         private Timer timerGame = new Timer();
 
         private Button[,] grid;
@@ -21,6 +15,9 @@ namespace WinFormsApp1
 
         private int score = 0;
         private int timeLeft;
+        private int caughtHyrax = 0;
+        private int targetHyrax = 0;
+
         public Form2()
         {
             InitializeComponent();
@@ -28,75 +25,121 @@ namespace WinFormsApp1
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            int X = ustawieniagry.X;
-            int Y = ustawieniagry.Y;
+            int rows = ustawieniagry.X;
+            int cols = ustawieniagry.Y;
 
-            grid = new Button[X, Y];
+            targetHyrax = ustawieniagry.Hyraxy;
+
+            grid = new Button[rows, cols];
+            
             int size = 60;
+            int startX = 20; ;
+            int startY = 70;
 
-            for (int i = 0; i < X; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < Y; j++)
+                for (int j = 0; j < cols; j++)
                 {
                     Button btn = new Button
                     {
                         Width = size,
                         Height = size,
-                        Left = j * size,
-                        Top = i * size,
+                        Left = startX+j * size,
+                        Top = StartY+i * size,
                         Tag = "empty",
-                        Text = ""
+                        Text = "🗑️"
+                        Font = new Font("Segoe UI Emoji", 18),
+                        BackColor = Color.LightGray
                     };
 
                     btn.Click += Btn_Click;
-
-                    this.Controls.Add(btn);
+                    Controls.Add(btn);
                     grid[i, j] = btn;
                 }
             }
 
             timeLeft = ustawieniagry.Czas;
+            lblTime.Text = $"Czas: {timeLeft}";
+            lblScore.Text= $"Punkty: {score}";
+            lblHyrax.Text = $"Hyraxy: {caughtHyrax}/{targetHyrax}";
 
             timerGame.Interval = 1000;
             timerGame.Tick += TimerGame_Tick;
             timerGame.Start();
 
             timerSpawn.Interval = 3000;
-            timerSpawn.Tick += (s, e) => SpawnAnimal();
+            timerSpawn.Tick += TimerSpawn_Tick;
             timerSpawn.Start();
 
-            SpawnAnimal();
+            timerHide.Interval = 1000;
+            timerHide.Tick += TimerHide_Tick;
+
+            SpawnAnimals();
+        }
+        private void TimerSpawn_Tick(object sender, EventArgs e)
+        {
+            SpawnAnimals();
+        }
+        private void TimerHide_Tick(object sender, EventArgs e)
+        {
+            ClearBoard();
+            timerHide.Stop();
         }
 
-        void SpawnAnimal()
+        void SpawnAnimals()
         {
-            if (grid == null) return;
-
-            foreach (var b in grid)
+            ClearBoard();
+            int animalCount = rand.Next(1, 4);
+            for (int i = 0; i < animalCount; i++)
             {
-                b.Text = "";
+                int x = rand.Next(ustawieniagry.Y);
+                int y = rand.Next(ustawieniagry.X);
+
+                while (grid[x, y].Tag.ToString() != "empty")
+                {
+                    x = rand.Next(ustawieniagry.Y);
+                    y = rand.Next(ustawieniagry.X);
+                }
+
+                string animal = DrawAnimal();
+
+                if (animal == "hyrax")
+                {
+                    grid[x, y].Text = "H";
+                    grid[x, y].BackColor = Color.LightGreen;
+                    grid[x, y].Tag = "hyrax";
+                }
+                else if (animal == "szop")
+                {
+                    grid[x, y].Text = "S";
+                    grid[x, y].BackColor = Color.LightBlue;
+                    grid[x, y].Tag = "szop";
+                }
+                else if (animal == "krokodyl")
+                {
+                    grid[x, y].Text = "K";
+                    grid[x, y].BackColor = Color.IndianRed;
+                    grid[x, y].Tag = "krokodyl";
+                }
+            }
+            timerHide.Start();
+        }
+        private string DrawAnimal()
+        {
+            int max = ustawieniagry.Hyraxy + ustawieniagry.Szopy + ustawieniagry.Krokodyle;
+            int number = rand.Next(max);
+
+            if (number < ustawieniagry.Hyraxy) return "hyrax";
+            else if (number < ustawieniagry.Hyraxy + ustawieniagry.Szopy) return "szop";
+            else return "krokodyl";
+        }
+        private void ClearBoard()
+        {
+            foreach (Button b in grid)
+            {
+                b.Text = "🗑️";
                 b.Tag = "empty";
-            }
-
-            int x = rand.Next(ustawieniagry.X);
-            int y = rand.Next(ustawieniagry.Y);
-
-            int animal = rand.Next(3); // 0=hyrax, 1=szop, 2=krokodyl
-
-            if (animal == 0 && ustawieniagry.Hyraxy > 0)
-            {
-                grid[x, y].Text = "H";
-                grid[x, y].Tag = "hyrax";
-            }
-            else if (animal == 1 && ustawieniagry.Szopy > 0)
-            {
-                grid[x, y].Text = "S";
-                grid[x, y].Tag = "szop";
-            }
-            else if (animal == 2 && ustawieniagry.Krokodyle > 0)
-            {
-                grid[x, y].Text = "K";
-                grid[x, y].Tag = "krokodyl";
+                b.BackColor = Color.LightGray;
             }
         }
         private void Btn_Click(object sender, EventArgs e)
@@ -107,43 +150,55 @@ namespace WinFormsApp1
             {
                 case "hyrax":
                     score++;
-                    if (ustawieniagry.Hyraxy > 0) ustawieniagry.Hyraxy--;
+                    caughtHyrax++;
+                    b.Text = "🗑️";
+                    b.Tag = "empty";
+                    b.BackColor = Color.LightGray;
+                    if (caughtHyrax >= targetHyrax)
+                    {
+                        EndGame("Wygrałeś! Złapałeś wszystkie hyraxy!");
+                        return;
+                    }
                     break;
 
                 case "szop":
                     score--;
-                    if (ustawieniagry.Szopy > 0) ustawieniagry.Szopy--;
+                    b.Text = "🗑️";
+                    b.Tag = "empty";
+                    b.BackColor = Color.LightGray;
                     break;
 
                 case "krokodyl":
                     EndGame("Kliknąłeś krokodyla!");
                     return;
             }
+            lblScore.Text=$"Punkty: {score}";
+            lblHyrax.Text = $"Hyraxy: {caughtHyrax}/{targetHyrax}";
         }
         private void TimerGame_Tick(object sender, EventArgs e)
         {
             timeLeft--;
 
-            lblTime.Text = timeLeft.ToString();
+            lblTime.Text = $"Czas: {timeLeft}";
 
             if (timeLeft <= 0)
             {
                 EndGame("Czas minął!");
             }
         }
-        void EndGame(string reason)
+        private void EndGame(string reason)
         {
             timerGame.Stop();
             timerSpawn.Stop();
+            timerHide.Stop();
 
-            MessageBox.Show($"{reason}\nWynik: {score}");
+            foreach (Button b in grid)
+            {
+                b.Enabled = false;
+            }
 
-            this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            MessageBox.Show($"{reason}\nWynik: {score}"\nCzas pozostaly:{timeLeft} sekund);
+            Close();
         }
     }
 }
