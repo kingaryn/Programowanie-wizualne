@@ -6,7 +6,7 @@ public static class BazaDanych
 {
     private static readonly string Polaczenie = "Data Source=probki.db";
 
-    public static void InicjalizujBazeDanych()
+    public static void Inicjalizuj()
     {
         using var polaczenie = new SqliteConnection(Polaczenie);
         polaczenie.Open();

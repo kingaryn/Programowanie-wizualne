@@ -81,6 +81,7 @@
             txtSzukaj.Name = "txtSzukaj";
             txtSzukaj.Size = new Size(125, 27);
             txtSzukaj.TabIndex = 3;
+            txtSzukaj.TextChanged += txtSzukaj_TextChanged;
             // 
             // label1
             // 
@@ -151,6 +152,7 @@
             btnDodaj.TabIndex = 11;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.Click += btnDodaj_Click;
             // 
             // btnEdytuj
             // 
@@ -160,6 +162,7 @@
             btnEdytuj.TabIndex = 12;
             btnEdytuj.Text = "Edytuj";
             btnEdytuj.UseVisualStyleBackColor = true;
+            btnEdytuj.Click += btnEdytuj_Click;
             // 
             // btnUsun
             // 
@@ -169,6 +172,7 @@
             btnUsun.TabIndex = 13;
             btnUsun.Text = "Usun";
             btnUsun.UseVisualStyleBackColor = true;
+            btnUsun.Click += btnUsun_Click;
             // 
             // label6
             // 
@@ -187,6 +191,7 @@
             btnSzukaj.TabIndex = 15;
             btnSzukaj.Text = "Szukaj";
             btnSzukaj.UseVisualStyleBackColor = true;
+            btnSzukaj.Click += btnSzukaj_Click;
             // 
             // tabelaProbek
             // 
@@ -196,6 +201,7 @@
             tabelaProbek.RowHeadersWidth = 51;
             tabelaProbek.Size = new Size(300, 188);
             tabelaProbek.TabIndex = 16;
+            tabelaProbek.CellClick += tabelaProbek_CellClick;
             // 
             // label7
             // 
@@ -222,6 +228,7 @@
             btnGenerujQr.TabIndex = 19;
             btnGenerujQr.Text = "Generuj QR";
             btnGenerujQr.UseVisualStyleBackColor = true;
+            btnGenerujQr.Click += btnGenerujQr_Click;
             // 
             // btnEksportujPng
             // 
@@ -231,6 +238,7 @@
             btnEksportujPng.TabIndex = 20;
             btnEksportujPng.Text = "Eksportuj PNG";
             btnEksportujPng.UseVisualStyleBackColor = true;
+            btnEksportujPng.Click += btnEksportujPng_Click;
             // 
             // btnDrukuj
             // 
@@ -240,6 +248,7 @@
             btnDrukuj.TabIndex = 21;
             btnDrukuj.Text = "Drukuj etykiete";
             btnDrukuj.UseVisualStyleBackColor = true;
+            btnDrukuj.Click += btnDrukuj_Click;
             // 
             // Form1
             // 
