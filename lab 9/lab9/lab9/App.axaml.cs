@@ -28,5 +28,6 @@ namespace lab9
 
             base.OnFrameworkInitializationCompleted();
         }
+
     }
 }
